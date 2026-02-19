@@ -6,6 +6,7 @@ app = Flask(__name__)
 def safety_score(distance, time, companion):
     score = 100
 
+    # Distance penalty
     score -= distance * 0.01
 
     if time == "night":
@@ -34,11 +35,11 @@ def route():
     time = data["time"]
     companion = data["companion"]
 
-    url = f"http://router.project-osrm.org/route/v1/foot/{start};{end}?alternatives=true&overview=false"
+    url = f"http://router.project-osrm.org/route/v1/foot/{start};{end}?alternatives=true&overview=full&geometries=geojson"
 
     res = requests.get(url).json()
 
-    best = None
+    best_route = None
     best_score = -999
 
     for r in res["routes"]:
@@ -47,11 +48,12 @@ def route():
 
         if score > best_score:
             best_score = score
-            best = r
+            best_route = r
 
     return jsonify({
-        "best_distance": best["distance"],
-        "score": best_score
+        "geometry": best_route["geometry"],
+        "score": best_score,
+        "distance": best_route["distance"]
     })
 
 
