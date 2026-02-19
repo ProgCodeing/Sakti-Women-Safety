@@ -1,32 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Women Safety Route Finder</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet"
+     href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  </head>
 
-  <body>
-    <h1>🚺 Women Safety Route Finder</h1>
+    <style>
+        body{
+            font-family: Arial;
+            text-align:center;
+            background:#f5f5f5;
+        }
+        input, select, button{
+            padding:10px;
+            margin:5px;
+            width:200px;
+        }
+        #map{
+            height:400px;
+            margin:20px;
+            border-radius:10px;
+        }
+        #result{
+            font-size:18px;
+            margin-top:10px;
+        }
+    </style>
+</head>
 
-    <input id="start" placeholder="Start Place (e.g. Nashik Road)" />
-    <input id="end" placeholder="Destination (e.g. City Center Mall)" />
+<body>
 
-    <select id="friend">
-      <option value="alone">Traveling Alone</option>
-      <option value="female">With Female Friend</option>
-      <option value="male">With Male Friend</option>
-    </select>
+<h1>🚺 Women Safety Route Finder</h1>
 
-    <button onclick="findRoute()">Find Safe Route</button>
+<input id="start" placeholder="Start place (Nashik Road)">
+<input id="end" placeholder="Destination (Gangapur Road)">
 
-    <div id="result"></div>
+<select id="friend">
+    <option value="alone">Traveling Alone</option>
+    <option value="female">With Female Friend</option>
+    <option value="male">With Male Friend</option>
+</select>
 
-    <div id="map" style="height: 400px"></div>
+<br>
 
-    
+<button onclick="findRoute()">Find Safe Route</button>
+<button onclick="panic()">🚨 Panic Alert</button>
 
-    <script src="script.js"></script>
-  </body>
+<div id="result"></div>
+<div id="map"></div>
+
+<script src="script.js"></script>
+
+</body>
 </html>
