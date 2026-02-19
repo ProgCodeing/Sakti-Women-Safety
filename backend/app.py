@@ -7,7 +7,7 @@ app = Flask(__name__)
 CORS(app)
 
 # ===== Crime data =====
-with open("backend\\crime_data.json") as f:
+with open("backend/crime_data.json") as f:
     CRIME_DATA = json.load(f)
 
 # ===== USERS =====
