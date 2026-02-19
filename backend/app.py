@@ -1,6 +1,8 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify 
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def home():
@@ -17,6 +19,8 @@ def route():
     return jsonify({
         "route": f"Safe route from {start} to {end} (traveling {friend})"
     })
+
+
 
 if __name__ == "__main__":
     import os
