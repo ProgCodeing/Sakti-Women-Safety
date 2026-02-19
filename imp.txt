@@ -1,0 +1,23 @@
+Phase 1
+
+✔ Website UI
+✔ Map click selection
+
+Phase 2
+
+✔ Python backend
+✔ Multiple route comparison
+
+Phase 3
+
+✔ Safety scoring using real factors
+
+Phase 4
+
+✔ Mobile app conversion
+
+Phase 5
+
+✔ Poster + explanation
+
+This keeps you on track in 9 days.
