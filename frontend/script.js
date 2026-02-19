@@ -1,24 +1,40 @@
 async function findRoute() {
-  let start = document.getElementById("start").value;
-  let end = document.getElementById("end").value;
-  let friend = document.getElementById("friend").value;
 
-  let res = await fetch(
-    "https://sakti-women-safety-production.up.railway.app/route",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ start, end, friend }),
-    },
-  );
+    let start = document.getElementById("start").value;
+    let end = document.getElementById("end").value;
 
-  let data = await res.json();
-  document.getElementById("result").innerHTML =
-    "Recommended Route: " + data.route;
+    const startCoords = await getCoordinates(start);
+    const endCoords = await getCoordinates(end);
 
-  var map = L.map("map").setView([20.0, 73.78], 12);
+    if (!startCoords || !endCoords) return;
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "Map data © OpenStreetMap",
-  }).addTo(map);
+    // Clear old map
+    map.setView([startCoords.lat, startCoords.lon], 13);
+
+    L.marker([startCoords.lat, startCoords.lon]).addTo(map)
+        .bindPopup("Start").openPopup();
+
+    L.marker([endCoords.lat, endCoords.lon]).addTo(map)
+        .bindPopup("Destination");
+
+    document.getElementById("result").innerHTML =
+        `Route from ${start} to ${end} displayed on map.`;
+}
+
+
+async function getCoordinates(place) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(place)}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.length === 0) {
+        alert("Location not found!");
+        return null;
+    }
+
+    return {
+        lat: parseFloat(data[0].lat),
+        lon: parseFloat(data[0].lon)
+    };
 }

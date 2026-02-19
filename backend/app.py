@@ -17,10 +17,12 @@ def route():
     friend = data.get("friend")
 
     return jsonify({
-        "route": f"Safe route from {start} to {end} (traveling {friend})"
-    })
-
-
+    "routes":[
+        "Safest Route (well-lit streets)",
+        "Fastest Route (shortest time)",
+        "Balanced Route"
+    ]
+})
 
 if __name__ == "__main__":
     import os
