@@ -1,26 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Women Safety Route Finder</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <title>Women Safety Route Finder</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-  <h1>🚺 Women Safety Route Finder</h1>
+  <body>
+    <h1>🚺 Women Safety Route Finder</h1>
 
-  <input id="start" placeholder="Start Place (e.g. Nashik Road)">
-  <input id="end" placeholder="Destination (e.g. City Center Mall)">
+    <input id="start" placeholder="Start Place (e.g. Nashik Road)" />
+    <input id="end" placeholder="Destination (e.g. City Center Mall)" />
 
-  <select id="friend">
-    <option value="alone">Traveling Alone</option>
-    <option value="female">With Female Friend</option>
-    <option value="male">With Male Friend</option>
-  </select>
+    <select id="friend">
+      <option value="alone">Traveling Alone</option>
+      <option value="female">With Female Friend</option>
+      <option value="male">With Male Friend</option>
+    </select>
 
-  <button onclick="findRoute()">Find Safe Route</button>
+    <button onclick="findRoute()">Find Safe Route</button>
 
-  <div id="result"></div>
+    <div id="result"></div>
 
-  <script src="script.js"></script>
-</body>
+    <div id="map" style="height: 400px"></div>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script src="script.js"></script>
+  </body>
 </html>
